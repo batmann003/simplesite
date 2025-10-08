@@ -90,7 +90,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>My Basic Website</h2>
   </header>
 
-  <section class="hero">
+  <section class="hero"> 
+    <!-- Add this below the existing <button> in hero section -->
+<form id="purchaseForm" onsubmit="handlePurchase(event)" style="margin-top:30px; text-align:center;">
+  <input type="text" name="name" placeholder="Your Name" required style="padding:8px; margin:5px;">
+  <input type="email" name="email" placeholder="Your Email" required style="padding:8px; margin:5px;">
+  <button type="submit">Purchase Now</button>
+</form>
+
     <h1>Welcome to My Website</h1>
     <p>This is a simple HTML, CSS, and JavaScript example.</p>
     <button onclick="showMessage()">Click Me</button>
@@ -100,7 +107,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>© 2025 MyWebsite. All rights reserved.</p>
   </footer>
 
-  <script>
+  <script> 
+    function handlePurchase(event) {
+  event.preventDefault(); // Prevent actual form submission
+  const form = document.getElementById('purchaseForm');
+  const name = form.name.value;
+  const email = form.email.value;
+  
+  alert(`Thank you, ${name}! Your purchase confirmation has been sent to ${email}.`);
+  
+  form.reset(); // Reset form fields
+}
+
     function showMessage() {
       alert("Hello! Thanks for visiting 😊");
     }
